@@ -1,0 +1,9 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^.*tar.gz$
+.gitignore
+.gitmodules
+README.md
+test_all.R
+test_specific.R
+.travis.yml
