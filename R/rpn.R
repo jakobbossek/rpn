@@ -50,17 +50,13 @@ rpn = function(rpn.expr, reverse = TRUE, eval = TRUE, clean = TRUE, vars = list(
   assertFlag(eval)
   assertFlag(clean)
   assertList(vars, any.missing = FALSE, all.missing = FALSE)
-  assertList(ops, types = "integer", any.missing = FALSE, all.missing = FALSE)
-
-  n = length(rpn.expr)
-  eval.stack = c()
-  infix.stack = c()
+  assertList(ops, types = "list", any.missing = FALSE, all.missing = FALSE)
 
   default.ops = list(
-    "+" = list(2, TRUE),
-    "-" = list(2, TRUE),
-    "*" = list(2, TRUE),
-    "/" = list(2, TRUE)
+    "+" = list(2, TRUE, "+"),
+    "-" = list(2, TRUE, "-"),
+    "*" = list(2, TRUE, "*"),
+    "/" = list(2, TRUE, "/")
   )
 
   ops.meta = BBmisc::insert(default.ops, ops)
@@ -69,13 +65,17 @@ rpn = function(rpn.expr, reverse = TRUE, eval = TRUE, clean = TRUE, vars = list(
   if (clean) {
     idx.to.clean = which(rpn.expr %in% c("(", ")"))
     if (length(idx.to.clean) > 0L)
-      rpn.expr = rpn.expr[-which(rpn.expr %in% c("(", ")"))]
+      rpn.expr = rpn.expr[-idx.to.clean]
   }
 
   # just polish notation?
   if (!reverse) {
     rpn.expr = rev(rpn.expr)
   }
+
+  n = length(rpn.expr)
+  eval.stack = c()
+  infix.stack = c()
 
   # first transform to infix notation
   i = 1L
@@ -118,7 +118,7 @@ rpn = function(rpn.expr, reverse = TRUE, eval = TRUE, clean = TRUE, vars = list(
           idx.var = which(eval.args == var.name)
           eval.args[idx.var] = vars[[var.name]]
         }
-        eval.stack = c(eval.stack, do.call(el, as.list(as.numeric(eval.args))))
+        eval.stack = c(eval.stack, do.call(ops.meta[[el]][[3L]], as.list(as.numeric(eval.args))))
       }
     }
     i = i + 1L
