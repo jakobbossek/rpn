@@ -8,8 +8,8 @@
 
 ## Description
 
-This R package contains a method to transform (reverse) polish notation to
-infix notation. It is a minimalistic, pure R implementation with no syntax checking. Passing syntatically correct RPN is thus neccessary. Otherwise the parsing process may fail with incomprehensible error messages.
+This R package contains a method to transform [(reverse) polish notation](https://en.wikipedia.org/wiki/Reverse_Polish_notation) to
+[infix notation](https://en.wikipedia.org/wiki/Infix_notation). It is a minimalistic, pure R implementation with no syntax checking. Passing syntatically correct RPN is thus neccessary. Otherwise the parsing process may fail with incomprehensible error messages.
 
 ## Installation Instructions
 
@@ -18,10 +18,6 @@ The package will be available in a first version at [CRAN](http://cran.r-project
 ```splus
 devtools::install_github("jakobbossek/rpn")
 ```
-
-## Example
-
-Assume we want to minimize the 2D [Ackeley Function](http://www.sfu.ca/~ssurjano/ackley.html). To accomplish this task with *rpn* we need to define the objective function as a [smoof](https://github.com/jakobbossek/smoof) function. This function is then passed with some control arguments to the main function of the packge.
 
 ## Contact
 
