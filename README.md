@@ -6,10 +6,11 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/eu0nns2dsgocwntw/branch/master?svg=true)](https://ci.appveyor.com/project/jakobbossek/rpn/branch/master)
 [![Coverage Status](https://coveralls.io/repos/jakobbossek/rpn/badge.svg)](https://coveralls.io/r/jakobbossek/rpn)
 
+**Info**: TravisCI build fails on Linux due to strange errors which are unrelated to R and the package itself.
+
 ## Description
 
-This R package contains a method to transform [(reverse) polish notation](https://en.wikipedia.org/wiki/Reverse_Polish_notation) to
-[infix notation](https://en.wikipedia.org/wiki/Infix_notation).
+This R package contains a method single method `rpn` to transform expressions in [(reverse) polish notation](https://en.wikipedia.org/wiki/Reverse_Polish_notation) to [infix notation](https://en.wikipedia.org/wiki/Infix_notation).
 
 ```splus
 # simple example
@@ -33,7 +34,7 @@ rpn(rpe, ops = ops, vars = vars)
 
 ## Installation Instructions
 
-The package will be available in a first version at [CRAN](http://cran.r-project.org) soon. If you are interested in trying out and playing around with the current github developer version use the [devtools](https://github.com/hadley/devtools) package and type the following command in R:
+You can download the package from [CRAN](http://cran.r-project.org/web/packages/rpn). If you are interested in trying out and playing around with the current github developer version use the [devtools](https://github.com/hadley/devtools) package and type the following command in R:
 
 ```splus
 devtools::install_github("jakobbossek/rpn")
