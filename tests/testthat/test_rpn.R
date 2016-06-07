@@ -1,6 +1,6 @@
-context("RPM to infix works fine")
+context("RPN to infix works fine")
 
-test_that("RPM to infix conversion works fine", {
+test_that("RPN to infix conversion works fine", {
   rpe = c("6", "4", "*", "6", "+")
   res = rpn(rpe, eval = TRUE)
   expect_equal(res$infix, "((6*4)+6)")
@@ -15,7 +15,17 @@ test_that("RPM to infix conversion works fine", {
   expect_equal(res$value, 26)
 })
 
-test_that("PN and RPM give the same results", {
+test_that("RPN breaks on wrong operator arity", {
+  rpe = c("6", "+") # invalid! Wrong number of arguments
+  expect_error(rpn(rpe), regexp = "arity")
+})
+
+test_that("RPN breaks if the number of elements on stack is greater 1 after termination", {
+  rpe = c("5", "5", "5", "+") # invalid!
+  expect_error(rpn(rpe), regexp = "single result")
+})
+
+test_that("PN and RPN give the same results", {
   rpe = c("6", "5", "5", "*", "+", "5", "-")
   pe = rev(rpe) # polish expression, i.e., operators before operands
 
