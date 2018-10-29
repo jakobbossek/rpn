@@ -4,8 +4,8 @@
 \alias{rpn}
 \title{Reverse Polish Notation converter/interpreter.}
 \usage{
-rpn(rpn.expr, reverse = TRUE, eval = TRUE, clean = TRUE, vars = list(),
-  ops = list())
+rpn(rpn.expr, reverse = TRUE, eval = TRUE, clean = TRUE,
+  vars = list(), ops = list())
 }
 \arguments{
 \item{rpn.expr}{[\code{character}]\cr
@@ -72,4 +72,3 @@ res = rpn(rpe, ops = ops, vars = vars)
 Lukasiewicz, Jan (1957). Aristotle's Syllogistic from the Standpoint of Modern
 Formal Logic. Oxford University Press.
 }
-

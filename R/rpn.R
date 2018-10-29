@@ -60,12 +60,12 @@
 #' @export
 rpn = function(rpn.expr, reverse = TRUE, eval = TRUE, clean = TRUE, vars = list(), ops = list()) {
   # sanity checking
-  assertCharacter(rpn.expr, min.len = 1L, any.missing = FALSE, all.missing = FALSE)
+  assertCharacter(rpn.expr, min.len = 1L, any.missing = FALSE)
   assertFlag(reverse)
   assertFlag(eval)
   assertFlag(clean)
-  assertList(vars, any.missing = FALSE, all.missing = FALSE)
-  assertList(ops, types = "list", any.missing = FALSE, all.missing = FALSE)
+  assertList(vars, any.missing = FALSE)
+  assertList(ops, types = "list", any.missing = FALSE)
 
   default.ops = list(
     "+" = list(2, TRUE, "+"),
